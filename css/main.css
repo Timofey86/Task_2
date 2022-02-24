@@ -1,0 +1,17 @@
+form, h2, p {
+    width: 500px;
+    margin-left: 300px;
+}
+
+.msg {
+    border: 2px solid #de9e29;
+    border-radius: 3px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.logout {
+    color: #d20e0e;
+
+}
