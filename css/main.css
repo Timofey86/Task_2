@@ -15,3 +15,18 @@ form, h2, p {
     color: #d20e0e;
 
 }
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    color: #ffffff;
+    background: #606060;
+}
+
+td {
+    background: #b5b5b5;
+
+}
+
