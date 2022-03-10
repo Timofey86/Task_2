@@ -1,12 +1,8 @@
-<!doctype html>
-<html lang="ru">
 <head>
-    <!-- Кодировка веб-страницы -->
     <meta charset="utf-8">
-    <!-- Настройка viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-RU-Compatible" content="ie=edge">
-    <title><?php echo $title; ?></title>
+    <title>Форма авторизации</title>
 
     <!-- Bootstrap CSS (Cloudflare CDN) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -19,6 +15,5 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../../css/main.css">
 </head>
-<body>

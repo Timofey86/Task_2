@@ -1,5 +1,6 @@
 <?php
 
+
 $db = mysqli_connect('localhost', 'root', '', 'register-db');
 
 if (!$db) {

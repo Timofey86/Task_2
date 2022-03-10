@@ -1,12 +1,14 @@
 <?php
 session_start();
-require_once "core/connect.php";
-
-
-$title = "Профиль пользователя";
-require __DIR__ . '/header.php';
+require_once "../../core/connect.php";
 //error_reporting(E_ALL);
 ?>
+<!doctype html>
+<html lang="en">
+<?php
+require_once '../components/head.php';
+?>
+<body>
 
 <div class="container mt-4">
     <div class="row">
@@ -15,10 +17,10 @@ require __DIR__ . '/header.php';
             <form>
                 <h3><?= $_SESSION['user']['login'] ?> </h3>
                 <p><?= $_SESSION['user']['email'] ?></p>
-                <a href="core/logout.php" class="logout">Выход</a>
+                <a href="../../core/logout.php" class="logout">Выход</a>
             </form>
             <hr>
-            <form method="post" action="core/upload.php" enctype="multipart/form-data">
+            <form method="post" action="../../core/upload.php" enctype="multipart/form-data">
                 <input type="file" name="image">
                 <button class="btn btn-success" type="submit">Загрузить</button>
 
@@ -26,7 +28,7 @@ require __DIR__ . '/header.php';
             <br>
             <hr>
             <?php
-            $idUser = $idUser = $_SESSION['user']['id'];
+            $idUser = $_SESSION['user']['id'];
             $result = mysqli_query($db, "SELECT image FROM images WHERE Iduser = $idUser ");
             $data = mysqli_fetch_all($result);
             $data = array_column($data, '0');
@@ -48,7 +50,7 @@ require __DIR__ . '/header.php';
                         <tr>
                             <td><?= $img[0] ?></td>
                             <td><?= $img[1] ?></td>
-                            <td><a href="core/delete.php?id=<?= $img[0] ?>">Delete</a></td>
+                            <td><a href="../../core/delete.php?id=<?= $img[0] ?>">Delete</a></td>
                         </tr>
                         <?php
                     }
@@ -73,8 +75,8 @@ require __DIR__ . '/header.php';
                 <?php foreach ($data as $image) : ?>
                     <p class="imglist">
 
-                        <a href="uploads/<?= $image ?> " data-fancybox="gallery">  <!-- ссылка на полное изображение -->
-                            <img src="uploads/mini/<?= $image ?>"/><!-- ссылка на изображение 100*100 -->
+                        <a href="../../uploads/<?= $image ?> " data-fancybox="gallery">  <!-- ссылка на полное изображение -->
+                            <img src="../../uploads/mini/<?= $image ?>"/><!-- ссылка на изображение 100*100 -->
                         </a>
                     </p>
                 <?php endforeach; ?>
