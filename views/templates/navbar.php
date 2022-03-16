@@ -7,13 +7,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="http://localhost/Task_twoo/views/pages/home.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="/views/pages/home.php">Home</a>
             </div>
         </div>
     </div>
     <div class="d-flex">
-        <a class="nav-link active" href="http://localhost/Task_twoo/views/pages/login.php">Login</a>
-        <a class="nav-link active" href="http://localhost/Task_twoo/views/pages/register.php"">Register</a>
+        <a class="nav-link active" href="/views/pages/login.php">Login</a>
+        <a class="nav-link active" href="/views/pages/register.php"">Register</a>
     </div>
 
 </nav>

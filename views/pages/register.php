@@ -5,21 +5,15 @@ if ($_SESSION['user']) {
 }
 
 ?>
-
 <!doctype html>
 <html lang="en">
-<?php
-require_once '../components/head.php';
-?>
+<?php require_once '../templates/head.php'; ?>
 <body>
-<?php
-require_once '../components/navbar.php';
-?>
+<?php require_once '../templates/navbar.php'; ?>
+
 <div class="container">
     <h2 class="mt-4">Форма регистрации</h2>
-    <form class="mt-4" action="../../core/signup.php" method="post">
-
-
+    <form class="mt-4" action="../../controllers/signup.php" method="post">
         <!-- Форма регистрации -->
 
         <input type="text" class="form-control" id="login" name="login" placeholder="Введите логин"><br>

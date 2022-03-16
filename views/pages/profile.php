@@ -1,14 +1,18 @@
 <?php
 session_start();
-require_once "../../core/connect.php";
+if (!$_SESSION['user']) {
+    header('Location: home.php');
+}
 //error_reporting(E_ALL);
+require_once '../../config/connect.php';
 ?>
 <!doctype html>
 <html lang="en">
-<?php
-require_once '../components/head.php';
-?>
+<?php require_once '../templates/head.php'; ?>
 <body>
+<?php
+//var_dump($_SESSION);
+?>
 
 <div class="container mt-4">
     <div class="row">
@@ -17,40 +21,30 @@ require_once '../components/head.php';
             <form>
                 <h3><?= $_SESSION['user']['login'] ?> </h3>
                 <p><?= $_SESSION['user']['email'] ?></p>
-                <a href="../../core/logout.php" class="logout">Выход</a>
+                <a href="../../controllers/logout.php" class="logout">Выход</a>
             </form>
             <hr>
-            <form method="post" action="../../core/upload.php" enctype="multipart/form-data">
+            <p><small>Формат изображения: <b>jpg, png, gif</b></small></p>
+            <form method="post" action="../../controllers/upload.php" enctype="multipart/form-data">
                 <input type="file" name="image">
                 <button class="btn btn-success" type="submit">Загрузить</button>
-
             </form>
             <br>
             <hr>
-            <?php
-            $idUser = $_SESSION['user']['id'];
-            $result = mysqli_query($db, "SELECT image FROM images WHERE Iduser = $idUser ");
-            $data = mysqli_fetch_all($result);
-            $data = array_column($data, '0');
-
-            ?>
             <table>
                 <tr>
                     <th>Image</th>
                 </tr>
 
                 <?php
-                $idUser = $idUser = $_SESSION['user']['id'];
-                $result1 = mysqli_query($db, "SELECT * FROM images WHERE Iduser = $idUser ");
-                $data1 = mysqli_fetch_all($result1);
+                //var_dump($_SESSION['images']);
                 //$data1 = array_column($data, '0');
-                if (!empty($data1)) {
-                    foreach ($data1 as $img) {
+                if (!empty($_SESSION['images'])) {
+                    foreach ($_SESSION['images'] as $img) {
                         ?>
                         <tr>
-                            <td><?= $img[0] ?></td>
-                            <td><?= $img[1] ?></td>
-                            <td><a href="../../core/delete.php?id=<?= $img[0] ?>">Delete</a></td>
+                            <td><?= $img[2] ?></td>
+                            <td><a href="../../controllers/delete.php?id=<?= $img[0] ?>">Delete</a></td>
                         </tr>
                         <?php
                     }
@@ -65,18 +59,14 @@ require_once '../components/head.php';
             }
             unset($_SESSION['message']);
             ?>
-            <?php
-            $idUser = $idUser = $_SESSION['user']['id'];
-            $result = mysqli_query($db, "SELECT image FROM images WHERE Iduser = $idUser ");
-            $data = mysqli_fetch_all($result);
-            $data = array_column($data, '0');
-            ?>
-            <?php if (!empty($data)) : ?>
-                <?php foreach ($data as $image) : ?>
+            <?php if (!empty($_SESSION['images'])) : ?>
+                <?php foreach ($_SESSION['images'] as $image) : ?>
                     <p class="imglist">
 
-                        <a href="../../uploads/<?= $image ?> " data-fancybox="gallery">  <!-- ссылка на полное изображение -->
-                            <img src="../../uploads/mini/<?= $image ?>"/><!-- ссылка на изображение 100*100 -->
+                        <a href="../../public/uploads/main/<?= $image[1] ?> " data-fancybox="gallery">
+                            <!-- ссылка на полное изображение -->
+                            <img src="../../public/uploads/mini/<?= $image[1] ?>"/>
+                            <!-- ссылка на изображение 100*100 -->
                         </a>
                     </p>
                 <?php endforeach; ?>
