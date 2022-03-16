@@ -38,7 +38,7 @@ require_once '../../config/connect.php';
 
                 <?php
                 //var_dump($_SESSION['images']);
-                //$data1 = array_column($data, '0');
+
                 if (!empty($_SESSION['images'])) {
                     foreach ($_SESSION['images'] as $img) {
                         ?>
@@ -64,9 +64,7 @@ require_once '../../config/connect.php';
                     <p class="imglist">
 
                         <a href="../../public/uploads/main/<?= $image[1] ?> " data-fancybox="gallery">
-                            <!-- ссылка на полное изображение -->
                             <img src="../../public/uploads/mini/<?= $image[1] ?>"/>
-                            <!-- ссылка на изображение 100*100 -->
                         </a>
                     </p>
                 <?php endforeach; ?>

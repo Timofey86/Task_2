@@ -18,7 +18,6 @@ require_once '../templates/navbar.php';
     <h2 class="mt-4">Авторизация</h2>
     <div class="row">
         <div class="col">
-            <!-- Форма авторизации -->
 
             <form class="mt-4" action="../../controllers/signin.php" method="post">
                 <input type="text" class="form-control" name="login" placeholder="Введите логин" required><br>

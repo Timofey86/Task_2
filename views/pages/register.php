@@ -14,7 +14,6 @@ if ($_SESSION['user']) {
 <div class="container">
     <h2 class="mt-4">Форма регистрации</h2>
     <form class="mt-4" action="../../controllers/signup.php" method="post">
-        <!-- Форма регистрации -->
 
         <input type="text" class="form-control" id="login" name="login" placeholder="Введите логин"><br>
         <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль"><br>

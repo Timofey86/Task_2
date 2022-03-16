@@ -44,7 +44,7 @@ class Upload
         move_uploaded_file($this->imagetmp, "../public/uploads/main/" . $unique_image_name);
         $uploadedfile = "../public/uploads/main/" . $unique_image_name;
 
-        $img = imagecreatefromjpeg($uploadedfile); //открываем исходное изображение
+        $img = imagecreatefromjpeg($uploadedfile);
         if (!$img) {
             $img = imagecreatefrompng($uploadedfile);
         }
@@ -54,14 +54,14 @@ class Upload
 
         list($img_width, $img_height) = getimagesize($uploadedfile);
         $width_mini = 220;
-        $k = round($img_width / $width_mini, 2); //коэффициент сжатия
+        $k = round($img_width / $width_mini, 2);
         $new_width = $img_width / $k;
         $new_heigth = $img_height / $k;
 
-        $tmp = imagecreatetruecolor($new_width, $new_heigth);//создаем новое изображение с меньшими размерами
-        $newfile = "../public/uploads/mini/" . $unique_image_name; //имя файла для нового изображения
+        $tmp = imagecreatetruecolor($new_width, $new_heigth);
+        $newfile = "../public/uploads/mini/" . $unique_image_name;
         imagecopyresampled($tmp, $img, 0, 0, 0, 0, $new_width, $new_heigth, $img_width, $img_height); //сжатие файла
-        imagejpeg($tmp, $newfile, 100);//сохраняем изображение на диск
+        imagejpeg($tmp, $newfile, 100);
 
         mysqli_query($this->db, "INSERT INTO `images` ( `image`,`image_original_name`, `id_user`) VALUES ( '$unique_image_name','$original_image_name', '$this->idUser')");
 
