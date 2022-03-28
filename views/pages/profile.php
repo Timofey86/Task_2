@@ -1,17 +1,16 @@
 <?php
 session_start();
 if (!$_SESSION['user']) {
-    header('Location: home.php');
+    header('Location: /views/pages/home.php');
 }
-//error_reporting(E_ALL);
+
 require_once '../../config/connect.php';
 ?>
-<!doctype html>
-<html lang="en">
+<?php require_once '../templates/header.php'?>
 <?php require_once '../templates/head.php'; ?>
 <body>
 <?php
-//var_dump($_SESSION);
+
 ?>
 
 <div class="container mt-4">
@@ -37,7 +36,7 @@ require_once '../../config/connect.php';
                 </tr>
 
                 <?php
-                //var_dump($_SESSION['images']);
+
 
                 if (!empty($_SESSION['images'])) {
                     foreach ($_SESSION['images'] as $img) {

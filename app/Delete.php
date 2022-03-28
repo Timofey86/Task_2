@@ -13,18 +13,20 @@ class Delete
         $this->id = $id;
     }
 
-    public function deleteImage()
+    public function getImage()
     {
-        $result = mysqli_query($this->db, "SELECT image FROM `images` WHERE `id` = '$this->id'");
-        if (!empty($result)) {
-            $data = mysqli_fetch_all($result);
+        return mysqli_query($this->db, "SELECT image FROM `images` WHERE `id` = '$this->id'");
+    }
+
+    public function deleteImage($array){
+        if (!empty($array)) {
+            $data = mysqli_fetch_all($array);
             $data1 = array_column($data, '0');
             unlink('../public/uploads/main/' . $data1[0]);
             unlink('../public/uploads/mini/' . $data1[0]);
         } else {
             $_SESSION['message'] = 'Такой файл не найден!';
             header('Location: ../views/pages/profile.php');
-
         }
     }
 
@@ -32,5 +34,4 @@ class Delete
     {
         mysqli_query($this->db, "DELETE FROM `images` WHERE `images`.`id` = '$this->id'");
     }
-
 }

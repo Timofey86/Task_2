@@ -13,16 +13,16 @@ class Authorization
         $this->login = $login;
         $this->password = $password;
         $this->db = $db;
-
     }
 
-    public function getCheckuser()
+    public function getUser()
     {
-
         $query = "SELECT * FROM `users` WHERE `login` = '$this->login' AND `password` = '$this->password'";
-        $check_user = mysqli_query($this->db, $query);
-        if (mysqli_num_rows($check_user) > 0) {
-            $user = mysqli_fetch_assoc($check_user);
+        return mysqli_query($this->db, $query);
+    }
+    public function checkUser($array){
+        if (mysqli_num_rows($array) > 0) {
+            $user = mysqli_fetch_assoc($array);
             $_SESSION['user'] = [
                 "id" => $user['id'],
                 "login" => $user['login'],
@@ -32,7 +32,5 @@ class Authorization
             $_SESSION['message'] = 'Неверный логин или пароль!';
             header('Location: ../views/pages/login.php');
         }
-
     }
-
 }

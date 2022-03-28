@@ -1,12 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['user']) {
-    header('Location: profile.php');
+    header('Location: /views/pages/profile.php');
 }
 
 ?>
-<!doctype html>
-<html lang="en">
+<?php require_once '../templates/header.php'?>
 <?php
 require_once '../templates/head.php';
 ?>

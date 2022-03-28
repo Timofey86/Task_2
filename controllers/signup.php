@@ -13,7 +13,9 @@ $email = trim($_POST['email']);
 
 $registration = new Registration($login, $password, $password_confirm, $email, $db);
 $registration->getValidationRegister();
-//$registration->checkAlreadyUser();
-//$registration->getRegister();
+if (!$_SESSION['message']) {
+    $registration->checkAlreadyUser();
+    $registration->getRegister();
+} else header('Location: ../views/pages/register.php');
 
 

@@ -9,7 +9,10 @@ $login = $_POST['login'];
 $password = md5($_POST['password']);
 
 $authorization = new Authorization($login, $password, $db);
-$authorization->getCheckuser();
+$array = $authorization->getUser();
+$authorization->checkUser($array);
+
+
 
 if ($_SESSION['user']) {
     $idUser = $_SESSION['user']['id'];

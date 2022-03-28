@@ -10,7 +10,8 @@ $id = $_GET['id'];
 $id = mysqli_real_escape_string($db, $id);
 
 $delete = new Delete($db, $id);
-$delete->deleteImage();
+$array = $delete->getImage();
+$delete->deleteImage($array);
 $delete->deleteFromDb();
 
 $idUser = $_SESSION['user']['id'];

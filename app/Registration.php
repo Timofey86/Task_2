@@ -22,8 +22,7 @@ class Registration
     {
         if ($this->login == '') {
             $_SESSION['message'] = 'Введите логин';
-
-            //header('Location: ../views/pages/register.php');
+            header('Location: ../views/pages/register.php');
         } elseif ($this->password == '') {
             $_SESSION['message'] = 'Введите пароль';
             header('Location: ../views/pages/register.php');
@@ -32,23 +31,23 @@ class Registration
             header('Location: ../views/pages/register.php');
         } elseif ($this->password !== $this->password_confirm) {
             $_SESSION['message'] = 'Повторный пароль введен не верно!';
-            header('Location: ../../views/pages/register.php');
+            header('Location: ../views/pages/register.php');
         } elseif (mb_strlen($this->login) < 5 && mb_strlen($this->login) > 90) {
             $_SESSION['message'] = 'Недопустимая длинна логина, от 5 до 90 символов';
-            header('Location: ../../views/pages/register.php');
+            header('Location: ../views/pages/register.php');
         } elseif (mb_strlen($this->password) < 2 || mb_strlen($this->password) > 8) {
             $_SESSION['message'] = 'Недопустимая длинна пароля, от 2 до 8 символов';
-            header('Location: ../../views/pages/register.php');
+            header('Location: ../views/pages/register.php');
         } elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $_SESSION['message'] = 'Недопустимый email';
-            header('Location: ../../views/pages/register.php');
+            header('Location: ../views/pages/register.php');
         } elseif (mysqli_num_rows(mysqli_query($this->db, "SELECT * FROM `users` WHERE `login` = '$this->login'"))) {
             $_SESSION['message'] = 'Такой логин уже существует';
-            header('Location: ../../views/pages/register.php');
+            header('Location: ../views/pages/register.php');
         } elseif (mysqli_num_rows(mysqli_query($this->db, "SELECT * FROM `users` WHERE `email` = '$this->email'"))) {
             $_SESSION['message'] = 'Такой email уже существует';
-            header('Location: ../../views/pages/register.php');
-        } else {
+            header('Location: ../views/pages/register.php');
+        } /*else {
             $this->password = md5($this->password);
             $login = mysqli_real_escape_string($this->db, $this->login);
             $email = mysqli_real_escape_string($this->db, $this->email);
@@ -56,7 +55,7 @@ class Registration
 
             $_SESSION['message'] = 'Регистрация прошла успешно';
             header('Location: ../views/pages/login.php');
-        }
+        }*/
     }
 
     public function checkAlreadyUser()
@@ -70,7 +69,6 @@ class Registration
         if (mysqli_num_rows(mysqli_query($this->db, "SELECT * FROM `users` WHERE `email` = '$email'"))) {
             $_SESSION['message'] = 'Такой email уже существует';
             header('Location: ../../views/pages/register.php');
-
         }
     }
 
@@ -84,6 +82,4 @@ class Registration
         $_SESSION['message'] = 'Регистрация прошла успешно';
         header('Location: ../views/pages/login.php');
     }
-
-
 }
