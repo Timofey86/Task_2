@@ -12,8 +12,6 @@ $authorization = new Authorization($login, $password, $db);
 $array = $authorization->getUser();
 $authorization->checkUser($array);
 
-
-
 if ($_SESSION['user']) {
     $idUser = $_SESSION['user']['id'];
     $result1 = mysqli_query($db, "SELECT * FROM images WHERE id_user = $idUser ");

@@ -4,14 +4,16 @@ namespace app;
 class Registration
 {
     private $login;
+    private $full_name;
     private $password;
     private $password_confirm;
     private $email;
     private $db;
 
-    public function __construct($login, $password, $password_confirm, $email, $db)
+    public function __construct($login, $full_name, $password, $password_confirm, $email, $db)
     {
         $this->login = $login;
+        $this->full_name = $full_name;
         $this->password = $password;
         $this->password_confirm = $password_confirm;
         $this->email = $email;
@@ -22,6 +24,9 @@ class Registration
     {
         if ($this->login == '') {
             $_SESSION['message'] = 'Введите логин';
+            header('Location: ../views/pages/register.php');
+        } elseif ($this->full_name == '') {
+            $_SESSION['message'] = 'Введите ФИО';
             header('Location: ../views/pages/register.php');
         } elseif ($this->password == '') {
             $_SESSION['message'] = 'Введите пароль';
@@ -47,15 +52,7 @@ class Registration
         } elseif (mysqli_num_rows(mysqli_query($this->db, "SELECT * FROM `users` WHERE `email` = '$this->email'"))) {
             $_SESSION['message'] = 'Такой email уже существует';
             header('Location: ../views/pages/register.php');
-        } /*else {
-            $this->password = md5($this->password);
-            $login = mysqli_real_escape_string($this->db, $this->login);
-            $email = mysqli_real_escape_string($this->db, $this->email);
-            mysqli_query($this->db, "INSERT INTO `users` ( `login`, `password`, `email`) VALUES ( '$login', '$this->password', '$email')");
-
-            $_SESSION['message'] = 'Регистрация прошла успешно';
-            header('Location: ../views/pages/login.php');
-        }*/
+        }
     }
 
     public function checkAlreadyUser()
@@ -75,9 +72,10 @@ class Registration
     public function getRegister()
     {
         $this->password = md5($this->password);
+        $full_name = mysqli_real_escape_string($this->db, $this->full_name);
         $login = mysqli_real_escape_string($this->db, $this->login);
         $email = mysqli_real_escape_string($this->db, $this->email);
-        mysqli_query($this->db, "INSERT INTO `users` ( `login`, `password`, `email`) VALUES ( '$login', '$this->password', '$email')");
+        mysqli_query($this->db, "INSERT INTO `users` ( `login`, `full_name`, `password`, `email`) VALUES ( '$login', '$full_name', '$this->password', '$email')");
 
         $_SESSION['message'] = 'Регистрация прошла успешно';
         header('Location: ../views/pages/login.php');

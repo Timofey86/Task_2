@@ -20,6 +20,8 @@ require_once '../../config/connect.php';
             <form>
                 <h3><?= $_SESSION['user']['login'] ?> </h3>
                 <p><?= $_SESSION['user']['email'] ?></p>
+                <p><?= $_SESSION['user']['full_name'] ?> <a href="update_full_name.php">Изменить</a></p>
+                <p><a href="update_password.php">Изменить пароль</a> </p>
                 <a href="../../controllers/logout.php" class="logout">Выход</a>
             </form>
             <hr>

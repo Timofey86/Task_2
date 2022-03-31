@@ -44,9 +44,9 @@ class Upload
 
         if ($this->type == 'image/jpeg') {
             $img = imagecreatefromjpeg($uploadedfile);
-        } if ($this->type == 'image/png') {
+        } elseif ($this->type == 'image/png') {
             $img = imagecreatefrompng($uploadedfile);
-        } if ($this->type == 'image/jpeg') {
+        } elseif ($this->type == 'image/jpeg') {
             $img = imagecreatefromgif($uploadedfile);
         }
 
@@ -62,9 +62,9 @@ class Upload
         imagecopyresampled($tmp, $img, 0, 0, 0, 0, $new_width, $new_heigth, $img_width, $img_height); //сжатие файла
         if ($this->type == 'image/jpeg') {
             imagejpeg($tmp, $newfile, 100);
-        } if ($this->type == 'image/png') {
+        } elseif ($this->type == 'image/png') {
             imagepng($tmp, $newfile, 100);
-        } if ($this->type == 'image/gif') {
+        } elseif ($this->type == 'image/gif') {
             imagegif($tmp, $newfile, 100);
         }
 

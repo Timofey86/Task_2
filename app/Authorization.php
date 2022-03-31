@@ -27,6 +27,7 @@ class Authorization
                 "id" => $user['id'],
                 "login" => $user['login'],
                 "email" => $user['email'],
+                "full_name" => $user['full_name']
             ];
         } else {
             $_SESSION['message'] = 'Неверный логин или пароль!';

@@ -15,6 +15,7 @@ if ($_SESSION['user']) {
     <form class="mt-4" action="../../controllers/signup.php" method="post">
 
         <input type="text" class="form-control" id="login" name="login" placeholder="Введите логин"><br>
+        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Введите ФИО"><br>
         <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль"><br>
         <input type="password" class="form-control" id="password_confirm" name="password_confirm"
                placeholder="Повторите пароль"><br>

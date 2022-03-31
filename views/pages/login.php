@@ -5,7 +5,7 @@ if ($_SESSION['user']) {
 }
 
 ?>
-<?php require_once '../templates/header.php'?>
+<?php require_once '../templates/header.php' ?>
 <?php
 require_once '../templates/head.php';
 ?>
