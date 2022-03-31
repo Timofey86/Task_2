@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 16 2022 г., 06:39
+-- Время создания: Мар 31 2022 г., 08:18
 -- Версия сервера: 5.7.33-log
 -- Версия PHP: 7.3.33
 
@@ -43,6 +43,7 @@ CREATE TABLE `images` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `full_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -51,11 +52,8 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`, `email`) VALUES
-(14, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin@mail.ru'),
-(15, 'timofey', 'e10adc3949ba59abbe56e057f20f883e', 'tim@mail.ru'),
-(21, 'proverka', 'e10adc3949ba59abbe56e057f20f883e', 'proverka@mail.ru'),
-(27, 'katja', '202cb962ac59075b964b07152d234b70', 'Katja@mail.ru');
+INSERT INTO `users` (`id`, `login`, `full_name`, `password`, `email`) VALUES
+(29, 'admin', 'Мухин Тимофей Валерьевич', '202cb962ac59075b964b07152d234b70', 'admin@mail.ru');
 
 --
 -- Индексы сохранённых таблиц
@@ -82,13 +80,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
